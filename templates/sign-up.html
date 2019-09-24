@@ -2,16 +2,13 @@
 
 {% block content %}
     <h1>Sign up!</h1>
-    <form action='/welcome' method="POST">
+    <form action='/' method="POST">
         <table>
             <tbody>
                 <tr>
                     <label>
                         <td><h5>Username:</td>
-                        <td><input type="text" name="username" required></h5></td>
-                        <!-- {% if error %}
-                        <p class="error"><strong>Please enter a valid username</strong></p>
-                        {% endif %} -->
+                        <td><input type="text" name="username" required value={{username}}></h5></td>
                         <td><p class="error"><strong>{{name_error}}</strong></p></td>
                     </label>
                 </tr>
@@ -19,14 +16,14 @@
                     <label>
                         <td><h5>Password:</td>
                         <td><input type="password" name="pass1" required></h5><p>{{no_match}}</p></td>
-                        <!-- <p class="error"><strong>Please enter a valid password</strong></p> -->
+                        <td><p class="error"><strong>{{pass1_error}}</strong></p></td>
                     </label>
                 </tr>
                 <tr>
                     <label>
                         <td><h5>Verify Password:</td>
                         <td><input type="password" name="pass2" required></h5></td>
-                        <!-- <p class="error"><strong>Password does not match</strong></p> -->
+                        <td><p class="error"><strong>{{pass2_error}}</strong></p></td>
                     </label>
                 </tr>
                 <tr>
