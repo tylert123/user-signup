@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Sign up!</h1>
+    <form action='/welcome' method="POST">
+        <label>
+            <h5>Username:
+            <input type="text" name="username"></h5>
+            <!-- {% if username|length < 1 %}
+            <p><strong>Not a valid username</strong></p>
+            {% endif %} -->
+        </label>
+        <label>
+            <h5>Password:
+            <input type="password" name="pass1"></h5>
+        </label>
+        <label>
+            <h5>Verify Password:
+            <input type="password" name="pass2"></h5>
+        </label>
+        <label>
+            <h5>Email (optional)
+            <input type="email" name="email"></h5>
+        </label>
+        <input type="submit">
+    </form>
+
+{% endblock %}
