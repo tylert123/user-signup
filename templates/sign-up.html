@@ -3,26 +3,44 @@
 {% block content %}
     <h1>Sign up!</h1>
     <form action='/welcome' method="POST">
-        <label>
-            <h5>Username:
-            <input type="text" name="username"></h5>
-            <!-- {% if username|length < 1 %}
-            <p><strong>Not a valid username</strong></p>
-            {% endif %} -->
-        </label>
-        <label>
-            <h5>Password:
-            <input type="password" name="pass1"></h5>
-        </label>
-        <label>
-            <h5>Verify Password:
-            <input type="password" name="pass2"></h5>
-        </label>
-        <label>
-            <h5>Email (optional)
-            <input type="email" name="email"></h5>
-        </label>
-        <input type="submit">
+        <table>
+            <tbody>
+                <tr>
+                    <label>
+                        <td><h5>Username:</td>
+                        <td><input type="text" name="username" required></h5></td>
+                        <!-- {% if error %}
+                        <p class="error"><strong>Please enter a valid username</strong></p>
+                        {% endif %} -->
+                        <td><p class="error"><strong>{{name_error}}</strong></p></td>
+                    </label>
+                </tr>
+                <tr>
+                    <label>
+                        <td><h5>Password:</td>
+                        <td><input type="password" name="pass1" required></h5><p>{{no_match}}</p></td>
+                        <!-- <p class="error"><strong>Please enter a valid password</strong></p> -->
+                    </label>
+                </tr>
+                <tr>
+                    <label>
+                        <td><h5>Verify Password:</td>
+                        <td><input type="password" name="pass2" required></h5></td>
+                        <!-- <p class="error"><strong>Password does not match</strong></p> -->
+                    </label>
+                </tr>
+                <tr>
+                    <label>
+                        <td><h5>Email (optional)</td>
+                        <td><input type="text" name="email"></h5></td>
+                    </label>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </form>
-
 {% endblock %}
