@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, render_template
 import cgi
+import re
 
 app = Flask(__name__)
 
@@ -8,6 +9,7 @@ app.config['DEBUG'] = True
 name_error = 'Please enter a valid username'
 pass1_error = 'Please enter a valid password'
 pass2_error = 'Password does not match'
+email_error = 'Please enter a valid email'
 
 @app.route('/')
 def index():
@@ -40,6 +42,14 @@ def sign_up():
 
     if pass1 != pass2:
         return render_template('sign-up.html', pass2_error=pass2_error, username=username)
+
+    if email != '':
+        if len(email) < 7:
+            return render_template('sign-up.html', email_error=email_error, username=username)
+        if len(email) > 7:
+            email_validate = bool(re.match("^.+@(\[?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$", email))
+        if email_validate is True:
+            return render_template('sign-up.html', email_error=email_error, username=username)
 
     return redirect('/welcome?username=' + username)
 
